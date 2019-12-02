@@ -1,2 +1,2 @@
 # Berrysoft.Blazor.DataGrid
-An DataGrid implementation for Blazor.
+A DataGrid implementation for Blazor.
