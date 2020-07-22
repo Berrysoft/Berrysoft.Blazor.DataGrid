@@ -26,7 +26,7 @@ namespace Berrysoft.Blazor.DataGrid
         {
             if (direction != DataGridSortDirection.None)
             {
-                DisplayItems = Items?.OfType<object>()?.OrderBy(item => item.GetType().GetProperty(column).GetValue(item), direction, comparer);
+                DisplayItems = Items?.OfType<object>()?.OrderBy(item => item.GetType().GetProperty(column)?.GetValue(item), direction, comparer);
             }
             else
             {

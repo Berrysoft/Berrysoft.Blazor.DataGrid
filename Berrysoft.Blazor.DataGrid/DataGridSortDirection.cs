@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Berrysoft.Blazor.DataGrid
@@ -14,7 +15,7 @@ namespace Berrysoft.Blazor.DataGrid
 
     static class DataGridSortHelper
     {
-        public static IEnumerable<T>? OrderBy<T, TKey>(this IEnumerable<T>? source, Func<T, TKey> keySelector, DataGridSortDirection direction, IComparer? comparer)
+        public static IEnumerable<T>? OrderBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector, DataGridSortDirection direction, IComparer? comparer)
         {
             return direction switch
             {
@@ -31,6 +32,6 @@ namespace Berrysoft.Blazor.DataGrid
 
         public ComparerWrapper(IComparer? comparer) => this.comparer = comparer ?? Comparer<T>.Default;
 
-        public int Compare(T x, T y) => comparer.Compare(x, y);
+        public int Compare([AllowNull] T x, [AllowNull] T y) => comparer.Compare(x, y);
     }
 }
